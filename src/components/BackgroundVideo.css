@@ -1,0 +1,28 @@
+/* src/components/BackgroundVideo.css */
+.video-background {
+    position: fixed; /* Use fixed to keep it in place while scrolling */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    z-index: -1; /* Place behind other elements */
+  }
+  
+  .video-background .react-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+ /* src/components/BackgroundVideo.css */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 0; /* Place above the video but below other content */
+  }
+   

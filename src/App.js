@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import Navbar from './components/Navbar'; // Adjust the path to './components/Navbar'
+import AboutMe from './components/AboutMe'; // Adjust the path to './components/AboutMe'
+import Projects from './components/Projects'; // Adjust the path to './components/Projects'
+import Contact from './components/Contact'; // Adjust the path to './components/Contact'
+import BackgroundVideo from './components/BackgroundVideo'; // Import the BackgroundVideo component
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BackgroundVideo /> {/* Add the BackgroundVideo component here */}
+      <Navbar />
+      <AboutMe />
+      <Projects />
+      <Contact />
+    </>
   );
-}
+};
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+

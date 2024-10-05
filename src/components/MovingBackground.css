@@ -1,0 +1,29 @@
+.moving-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* This keeps it behind the content */
+  }
+  
+  .omen-image {
+    width: 100%; /* Make the image cover the entire width */
+    height: 100%; /* Make the image cover the entire height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+  }
+  
+  
+  @keyframes move {
+    0% {
+      transform: translateY(0); /* Start position */
+    }
+    100% {
+      transform: translateY(-50px); /* Move upwards; adjust the value to your liking */
+    }
+  }
+  
+  
+  
+  

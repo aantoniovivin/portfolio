@@ -1,0 +1,83 @@
+/* src/components/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7); /* Background color for the navbar */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu-icon {
+  display: none; /* Hide the hamburger by default */
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s; /* Smooth transition */
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: white; /* Adjust color as needed */
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.open {
+  background-color: #ff0000; /* Change color when open (optional) */
+  transform: rotate(45deg); /* Rotate the top bar */
+}
+
+.open:nth-child(2) {
+  opacity: 0; /* Hide the middle bar */
+}
+
+.open:nth-child(3) {
+  transform: rotate(-45deg); /* Rotate the bottom bar */
+}
+
+.nav-list {
+  transition: max-height 0.3s ease-in-out; /* Smooth transition for dropdown */
+  overflow: hidden; /* Hide overflowing items */
+  max-height: 0; /* Start closed */
+}
+
+.nav-list.active {
+  max-height: 300px; /* Set a max height when active */
+  display: flex; /* Show the links */
+}
+
+.nav-list a {
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth color transition */
+}
+
+.nav-list a:hover {
+  color: #ff0000; /* Change color on hover */
+  transform: scale(1.1); /* Slightly scale up on hover */
+}
+
+@media (max-width: 768px) { /* Media query for mobile devices */
+  .menu-icon {
+    display: flex; /* Show hamburger on smaller screens */
+  }
+
+  .nav-list {
+    position: absolute;
+    top: 50px; /* Adjust based on navbar height */
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background for dropdown */
+    flex-direction: column;
+    width: 100%; /* Full width on mobile */
+    display: none; /* Initially hidden */
+    max-height: 0; /* Initially closed */
+  }
+
+  .nav-list.active {
+    display: flex; /* Show links when the menu is active */
+    max-height: 300px; /* Set a max height when active */
+  }
+}
+
+
