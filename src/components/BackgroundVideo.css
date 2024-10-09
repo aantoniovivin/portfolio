@@ -1,28 +1,115 @@
-/* src/components/BackgroundVideo.css */
+/* Ensure full-screen background video */
 .video-background {
-    position: fixed; /* Use fixed to keep it in place while scrolling */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    overflow: hidden;
-    z-index: -1; /* Place behind other elements */
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Ensure full viewport height */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Animation for the video */
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+    transform: scale(1.1) rotate(0deg);
   }
-  
-  .video-background .react-player {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  50% {
+    opacity: 0.8;
+    transform: scale(1) rotate(10deg);
   }
- /* src/components/BackgroundVideo.css */
+  100% {
+    opacity: 1;
+    transform: scale(0.95) rotate(-10deg);
+  }
+}
+
+@keyframes zoomRotate {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(45deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Full-screen video setup with proper object-fit */
+.react-player {
+  position: fixed; /* Positioning video to be fixed */
+  top: 0;
+  left: 0;
+  z-index: -1;
+  object-fit: cover; /* Cover the entire screen without stretching */
+  width: 100%;
+  height: 100%;
+}
+
+/* Overlay to darken the video and improve content visibility */
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 0; /* Place above the video but below other content */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+/* Content setup */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  padding: 20px;
+  animation: contentFadeIn 5s ease-in-out infinite alternate;
+}
+
+@keyframes contentFadeIn {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Adding a little text animation */
+.content-title {
+  font-size: 3rem;
+  animation: titleBounce 5s ease-in-out infinite alternate;
+}
+
+@keyframes titleBounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.content-description {
+  font-size: 1.5rem;
+  animation: descriptionFadeIn 7s ease-in-out infinite alternate;
+}
+
+@keyframes descriptionFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
    

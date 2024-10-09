@@ -4,15 +4,25 @@ import './Navbar.css'; // Import the CSS file for styling
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to manage menu open/close
 
-  const handleClick = (e) => {
-    // Add a class to create the sprinkle effect on click
+  const handleClick = (e, menu) => {
     const link = e.target;
+
+    // Add the sprinkle effect animation to all links
     link.classList.add('sprinkle-animation');
 
-    // Remove the class after the animation duration
+    // Add popup/bounce/wiggle animation based on the clicked menu
+    if (menu === 'about') {
+      link.classList.add('bounce');  // Add bounce effect
+    } else if (menu === 'projects') {
+      link.classList.add('popup');  // Add popup animation
+    } else if (menu === 'contact') {
+      link.classList.add('wiggle', 'pulse');  // Add both wiggle and pulse animation
+    }
+
+    // Remove animation classes after 1 second to reset for the next click
     setTimeout(() => {
-      link.classList.remove('sprinkle-animation');
-    }, 1000); // Adjust duration based on your CSS animation length
+      link.classList.remove('sprinkle-animation', 'bounce', 'popup', 'wiggle', 'pulse');
+    }, 1000); // This matches the duration of the longest animation
   };
 
   const toggleMenu = () => {
@@ -20,53 +30,58 @@ const Navbar = () => {
   };
 
   return (
-    <nav style={navbarStyle} className="navbar">
+    <nav className="navbar">
       <div className="menu-icon" onClick={toggleMenu}>
         <div className={`bar ${isOpen ? 'open' : ''}`}></div>
         <div className={`bar ${isOpen ? 'open' : ''}`}></div>
         <div className={`bar ${isOpen ? 'open' : ''}`}></div>
       </div>
-      <ul className={`nav-list ${isOpen ? 'active' : ''}`} style={navListStyle}>
-        <li style={navItemStyle}>
-          <a href="#about" className="link" onClick={handleClick}>About Me</a>
-        </li>
-        <li style={navItemStyle}>
-          <a href="#projects" className="link" onClick={handleClick}>Projects</a>
-        </li>
-        <li style={navItemStyle}>
-          <a href="#contact" className="link" onClick={handleClick}>Contact</a>
-        </li>
-      </ul>
+      <div className={`nav-container ${isOpen ? 'open' : ''}`}>
+        <ul className="nav-list">
+          <li className="nav-item">
+            <a
+              href="#about"
+              className="link"
+              onClick={(e) => handleClick(e, 'about')}
+            >
+              About Me
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              href="#projects"
+              className="link"
+              onClick={(e) => handleClick(e, 'projects')}
+            >
+              Projects
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              href="#contact"
+              className="link"
+              onClick={(e) => handleClick(e, 'contact')}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };
 
-// Navbar styles
-const navbarStyle = {
-  backgroundColor: 'transparent',
-  color: '#fff',
-  padding: '10px',
-  position: 'sticky',
-  top: 0,
-  zIndex: 1000,
-  display: 'flex', // Ensure the navbar is flexible
-  justifyContent: 'space-between', // Adjust to space between logo and menu
-  alignItems: 'center', // Center items vertically
-};
-
-const navListStyle = {
-  listStyleType: 'none',
-  display: 'flex',
-  justifyContent: 'space-around', // Distribute space evenly
-  margin: 0, // Remove default margin
-  padding: 0, // Remove default padding
-};
-
-const navItemStyle = {
-  margin: '0 15px',
-};
-
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
 
 
 

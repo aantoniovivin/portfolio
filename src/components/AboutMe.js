@@ -1,65 +1,65 @@
-import React from 'react';
-import myImage from './myImage.jpeg'; // Adjust the file name if needed
-
-// Inline styles for advanced design
-const aboutMeStyle = {
-  padding: '50px 20px',
-  textAlign: 'center',
-  backgroundColor: 'transparent', // Set background to transparent to show full image
-  color: '#f5f5f5',
-  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-  borderRadius: '15px',
-  maxWidth: '800px',
-  margin: '50px auto',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-};
-
-const titleStyle = {
-  fontSize: '2.5rem',
-  marginBottom: '20px',
-  color: '#76ff03',
-};
-
-const paragraphStyle = {
-  fontSize: '1.2rem',
-  lineHeight: '1.8',
-};
-
-const imageStyle = {
-  borderRadius: '50%', // Make the image circular, adjust as needed
-  width: '150px', // Set width
-  height: '150px', // Set height
-  margin: '20px auto', // Center the image
-};
+import React, { useState, useEffect } from 'react';
+import myImage from './myImage.jpeg'; // Adjust the path to your image
+import './Typewriter.css'; // Import the typewriter CSS
 
 const AboutMe = () => {
+  const [nameTyped, setNameTyped] = useState(''); // State to control the typewriter effect for the name
+  const fullName = "Aantonio Vivin"; // Your name to display with typewriter effect
+  const [nameCompleted, setNameCompleted] = useState(false); // Track if name typing is completed
+
+  // Typewriter effect for name
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      setNameTyped((prev) => prev + fullName[index]);
+      index++;
+      if (index >= fullName.length) {
+        clearInterval(interval); // Stop the interval when the full name is typed
+        setNameCompleted(true); // Mark typing as completed
+      }
+    }, 100); // Adjust typing speed for the name
+    return () => clearInterval(interval); // Clean up the interval on unmount
+  }, [fullName]);
+
   return (
-    <section id="about" style={aboutMeStyle}>
-      <h2 style={titleStyle}>About Me</h2>
-      <img src={myImage} alt="Aantonio Vivin" style={imageStyle} /> {/* Add the image here */}
-      <p style={paragraphStyle}>
-        Hi, I'm <strong>Aantonio Vivin</strong>, a passionate third-year Computer Science Engineering student 
-        at Francis Xavier Engineering College. I have a deep interest in building web applications and exploring 
-        new technologies. My focus is on writing clean, efficient code and creating dynamic user experiences 
-        through modern web development techniques. I thrive in collaborative environments and love tackling challenging projects.
-      </p>
-      <h3 style={titleStyle}>Skills</h3>
-      <ul style={{ textAlign: 'center', margin: '0 auto', display: 'inline-block', listStyleType: 'none', padding: 0 }}>
-        <li>✔️ Web Development (HTML, CSS, JavaScript)</li>
-        <li>✔️ React.js</li>
-        <li>✔️ Node.js</li>
-        <li>✔️ Python</li>
-        <li>✔️ Git & GitHub</li>
-        <li>✔️ Responsive Design</li>
-        <li>✔️ API Development</li>
-        <li>✔️ Database Management (MySQL, MongoDB)</li>
-        <li>✔️ Agile Methodologies</li>
-      </ul>
+    <section id="about" style={{ padding: '50px 20px', textAlign: 'center', color: '#f5f5f5' }}>
+      <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#76ff03' }}>About Me</h2>
+      <img
+        src={myImage}
+        alt="Aantonio Vivin"
+        style={{
+          borderRadius: '50%',
+          width: '250px',
+          height: '250px',
+          margin: '20px auto',
+          boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
+        }}
+      />
+      
+      {/* Typewriter effect for the name below the image */}
+      <h3 style={{ fontSize: '2rem', color: '#76ff03', margin: '20px 0' }}>
+        <span className="typewriter-name">{nameTyped}</span>
+      </h3>
+      
+      {/* Show the paragraph only when the name typing completes */}
+      {nameCompleted && (
+        <p style={{ fontSize: '1.2rem', lineHeight: '1.8', marginTop: '20px' }}>
+          Hi, I'm <strong>Aantonio Vivin</strong>, a passionate third-year Computer Science Engineering student 
+          at Francis Xavier Engineering College. I have a deep interest in building web applications and exploring 
+          new technologies. My focus is on writing clean, efficient code and creating dynamic user experiences 
+          through modern web development techniques. I thrive in collaborative environments and love tackling challenging projects.
+        </p>
+      )}
     </section>
   );
 };
 
 export default AboutMe;
+
+
+
+
+
 
 
 

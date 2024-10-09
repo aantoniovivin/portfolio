@@ -1,35 +1,40 @@
 import React from 'react';
+import './Projects.css'; // Import the CSS file
 
 const Projects = () => {
-  // Sample project data (replace with your actual project details)
+  // Sample project data
   const projectData = [
     {
       title: 'Project One',
-      description: 'This is a brief description of Project One. It showcases various features and technologies used.',
-      link: 'https://github.com/yourusername/project-one', // Link to GitHub or demo
+      description: 'I am a passionate Computer Science Engineering student with a keen interest in web development and programming. I specialize in building interactive and responsive websites using React.js, and I love exploring new technologies and tools. With a solid understanding of front-end and back-end frameworks, I focus on creating user-friendly applications. I am constantly working on improving my skills in UI/UX design, problem-solving, and optimization. My curiosity and dedication drive me to stay up-to-date with industry trends. I strive to deliver innovative solutions and contribute to open-source communities.',
+      link: 'https://github.com/aantoniovivin/portfolio',
     },
     {
       title: 'Project Two',
-      description: 'This is a brief description of Project Two. It highlights key functionalities and innovations.',
-      link: 'https://github.com/yourusername/project-two', // Link to GitHub or demo
+      description: 'Project Two is a web application that leverages modern JavaScript technologies and frameworks. It focuses on delivering a seamless user experience by integrating a dynamic UI with responsive design principles. The project features real-time data handling, ensuring smooth interactions and live updates. Built using React.js, it incorporates reusable components for modular development. Advanced state management techniques like Redux are utilized for efficient data flow. The application is optimized for performance and designed to scale, ensuring fast load times and reliability.',
+      link: 'https://github.com/aantoniovivin/vivin',
     },
     {
       title: 'Project Three',
-      description: 'This is a brief description of Project Three. It demonstrates your skills and creativity.',
-      link: 'https://github.com/yourusername/project-three', // Link to GitHub or demo
+      description: 'Project Three is a fully responsive e-commerce web application that allows users to browse products, add them to the cart, and proceed to checkout. Built with React.js and Node.js, it supports secure payment processing and an intuitive admin dashboard for product management. The application is optimized for performance and designed for scalability to handle high traffic.',
+      link: 'https://github.com/yourusername/project-three',
     },
-    // Add more projects as needed
   ];
 
   return (
-    <section id="projects" style={projectsStyle}>
-      <h2 style={titleStyle}>Projects</h2>
-      <div style={projectsContainerStyle}>
+    <section id="projects" className="projects-section">
+      <h2 className="projects-title">Projects</h2>
+      <div className="projects-container">
         {projectData.map((project, index) => (
-          <div key={index} style={projectCardStyle}>
-            <h3 style={projectTitleStyle}>{project.title}</h3>
-            <p style={projectDescriptionStyle}>{project.description}</p>
-            <a href={project.link} style={linkStyle} target="_blank" rel="noopener noreferrer">
+          <div key={index} className="project-card">
+            <h3 className="project-title typewriter">{project.title}</h3>
+            <p className="project-description">{project.description}</p>
+            <a
+              href={project.link}
+              className="project-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               View Project
             </a>
           </div>
@@ -39,62 +44,14 @@ const Projects = () => {
   );
 };
 
-// Styles for the Projects section
-const projectsStyle = {
-  padding: '50px 20px',
-  textAlign: 'center',
-  backgroundColor: 'transparent', // Change to transparent to remove the black blur
-  color: '#f5f5f5',
-};
-
-const titleStyle = {
-  fontSize: '2.5rem',
-  color: '#76ff03', // Lime color for title
-  marginBottom: '30px',
-};
-
-// Container for project cards
-const projectsContainerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-};
-
-// Individual project card styles
-const projectCardStyle = {
-  backgroundColor: '#444', // Card background color
-  borderRadius: '10px',
-  padding: '20px',
-  margin: '15px 0',
-  maxWidth: '600px',
-  width: '100%',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-  transition: 'transform 0.3s ease',
-};
-
-// Styles for project titles and descriptions
-const projectTitleStyle = {
-  fontSize: '1.8rem',
-  color: '#76ff03', // Lime color for project titles
-};
-
-const projectDescriptionStyle = {
-  fontSize: '1.1rem',
-  margin: '10px 0',
-};
-
-// Link styles
-const linkStyle = {
-  color: '#76ff03',
-  textDecoration: 'none',
-  fontWeight: 'bold',
-  border: '2px solid #76ff03',
-  padding: '10px 15px',
-  borderRadius: '5px',
-  transition: 'background-color 0.3s ease',
-};
-
+// Exporting Projects as default
 export default Projects;
+
+
+
+
+
+
 
 
 
